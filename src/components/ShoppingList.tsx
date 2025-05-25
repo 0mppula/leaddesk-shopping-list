@@ -15,7 +15,7 @@ import {
 } from '@/features/shopping/shoppingSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { Pen, Trash2 } from 'lucide-react';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
@@ -23,6 +23,22 @@ import { ScrollArea, ScrollBar } from './ui/scroll-area';
 const ShoppingList = () => {
 	const { shoppingListItems } = useAppSelector((state) => state.shoppingListItems);
 	const dispatch = useAppDispatch();
+
+	const lastItemRef = useRef<HTMLTableRowElement>(null);
+	const prevLengthRef = useRef(shoppingListItems.length);
+
+	// Scroll to bottom of the list whenever a new item is added.
+	useEffect(() => {
+		// Do not scroll when an item is removed or on initial render.
+		if (shoppingListItems.length > prevLengthRef.current) {
+			if (lastItemRef.current) {
+				lastItemRef.current.scrollIntoView({ behavior: 'smooth' });
+			}
+		}
+
+		// Update previous length for next render
+		prevLengthRef.current = shoppingListItems.length;
+	}, [shoppingListItems.length]);
 
 	const handleDeleteItem = (id: string) => {
 		const item = shoppingListItems.find((item) => item.id === id);
@@ -54,9 +70,14 @@ const ShoppingList = () => {
 
 				<TableBody>
 					{shoppingListItems.map((item, i) => (
-						<TableRow key={item.id + i}>
+						<TableRow
+							key={item.id + i}
+							ref={i === shoppingListItems.length - 1 ? lastItemRef : null}
+						>
 							<Fragment>
-								<TableCell className="font-medium">{item.name}</TableCell>
+								<TableCell className="font-medium break-words whitespace-normal overflow-hidden">
+									{item.name}
+								</TableCell>
 
 								<TableCell>{item.amount}</TableCell>
 

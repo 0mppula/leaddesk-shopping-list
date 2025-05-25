@@ -7,7 +7,7 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
-import { editItem, toggleEditModal } from '@/features/shopping/shoppingSlice';
+import { editItem, setEditedItem, toggleEditModal } from '@/features/shopping/shoppingSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { shoppingListformSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -60,8 +60,17 @@ const EditShoppingListItemModal = () => {
 		toast('Item edited successfully!');
 	};
 
+	const handleModalOpenChange = (open: boolean) => {
+		dispatch(toggleEditModal(open));
+
+		if (!open) {
+			// Clear edited item when modal is closed
+			dispatch(setEditedItem(null));
+		}
+	};
+
 	return (
-		<Dialog open={editModalOpen} onOpenChange={(open) => dispatch(toggleEditModal(open))}>
+		<Dialog open={editModalOpen} onOpenChange={(open) => handleModalOpenChange(open)}>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>Edit Item: {editedItem?.name}</DialogTitle>
@@ -91,7 +100,12 @@ const EditShoppingListItemModal = () => {
 								render={({ field }) => (
 									<FormItem className="w-20">
 										<FormControl>
-											<Input type="number" placeholder="12" {...field} />
+											<Input
+												type="number"
+												min="0"
+												placeholder="12"
+												{...field}
+											/>
 										</FormControl>
 									</FormItem>
 								)}

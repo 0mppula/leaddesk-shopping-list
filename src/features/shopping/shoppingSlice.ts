@@ -170,7 +170,7 @@ const shoppingSlice = createSlice({
 		toggleEditModal(state, action: PayloadAction<boolean>) {
 			state.editModalOpen = action.payload;
 		},
-		setEditedItem(state, action: PayloadAction<IShoppingItem>) {
+		setEditedItem(state, action: PayloadAction<IShoppingItem | null>) {
 			state.editedItem = action.payload;
 		},
 	},
