@@ -59,6 +59,7 @@ Running commands with npm `npm run [command]`
 | :------ | :----------------------------------------------------------------------------------------------- |
 | `dev`   | Starts a development instance of the app                                                         |
 | `lint`  | Runs ESLint to check for errors and warnings. Errors will fail the build, but warnings will not. |
+| `test`  | Runs Vitest (compatible with Jest) to execute unit tests.                                        |
 
 ---
 
