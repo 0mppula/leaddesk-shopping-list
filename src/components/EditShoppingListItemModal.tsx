@@ -6,7 +6,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { editItem, toggleEditModal } from '@/features/shopping/shoppingSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { shoppingListformSchema } from '@/schemas';
@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import FormErrors, { getErrorMessages } from './FormErrors';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -56,7 +57,7 @@ const EditShoppingListItemModal = () => {
 		};
 
 		dispatch(editItem(newItem));
-		toast(`"${editedItem?.name}" edited successfully!`);
+		toast('Item edited successfully!');
 	};
 
 	return (
@@ -80,8 +81,6 @@ const EditShoppingListItemModal = () => {
 										<FormControl>
 											<Input placeholder="Add a new item..." {...field} />
 										</FormControl>
-
-										<FormMessage />
 									</FormItem>
 								)}
 							/>
@@ -94,8 +93,6 @@ const EditShoppingListItemModal = () => {
 										<FormControl>
 											<Input type="number" placeholder="12" {...field} />
 										</FormControl>
-
-										<FormMessage />
 									</FormItem>
 								)}
 							/>
@@ -111,6 +108,8 @@ const EditShoppingListItemModal = () => {
 							<Button>Edit</Button>
 						</DialogFooter>
 					</form>
+
+					<FormErrors errors={getErrorMessages(form.formState.errors)} />
 				</Form>
 			</DialogContent>
 		</Dialog>

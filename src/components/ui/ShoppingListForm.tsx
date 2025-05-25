@@ -1,4 +1,4 @@
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { addItem } from '@/features/shopping/shoppingSlice';
 import { useAppDispatch } from '@/hooks';
@@ -8,6 +8,7 @@ import { Plus } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import FormErrors, { getErrorMessages } from '../FormErrors';
 import { Button } from './button';
 
 const ShoppingListForm = () => {
@@ -45,8 +46,6 @@ const ShoppingListForm = () => {
 							<FormControl>
 								<Input placeholder="Add a new item..." {...field} />
 							</FormControl>
-
-							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -57,18 +56,18 @@ const ShoppingListForm = () => {
 					render={({ field }) => (
 						<FormItem className="w-20">
 							<FormControl>
-								<Input type="number" placeholder="12" {...field} />
+								<Input type="number" min="0" placeholder="12" {...field} />
 							</FormControl>
-
-							<FormMessage />
 						</FormItem>
 					)}
 				/>
 
 				<Button type="submit">
-					<Plus />
+					<Plus aria-hidden />
 				</Button>
 			</form>
+
+			<FormErrors errors={getErrorMessages(form.formState.errors)} />
 		</Form>
 	);
 };

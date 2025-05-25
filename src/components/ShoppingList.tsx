@@ -67,7 +67,7 @@ const ShoppingList = () => {
 											onClick={() => handleModalOpen(item)}
 											aria-label={`Edit ${item.name}`}
 										>
-											<Pen />
+											<Pen aria-hidden />
 										</Button>
 
 										<Button
@@ -75,7 +75,7 @@ const ShoppingList = () => {
 											variant="destructive"
 											aria-label={`Delete ${item.name}`}
 										>
-											<Trash2 />
+											<Trash2 aria-hidden />
 										</Button>
 									</div>
 								</TableCell>
