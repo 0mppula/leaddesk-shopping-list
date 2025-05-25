@@ -69,40 +69,53 @@ const ShoppingList = () => {
 				</TableHeader>
 
 				<TableBody>
-					{shoppingListItems.map((item, i) => (
-						<TableRow
-							key={item.id + i}
-							ref={i === shoppingListItems.length - 1 ? lastItemRef : null}
-						>
-							<Fragment>
-								<TableCell className="font-medium break-words whitespace-normal overflow-hidden">
-									{item.name}
-								</TableCell>
-
-								<TableCell>{item.amount}</TableCell>
-
-								<TableCell>
-									<div className="flex items-center justify-end gap-2">
-										<Button
-											variant="outline"
-											onClick={() => handleModalOpen(item)}
-											aria-label={`Edit ${item.name}`}
-										>
-											<Pen aria-hidden />
-										</Button>
-
-										<Button
-											onClick={() => handleDeleteItem(item.id)}
-											variant="destructive"
-											aria-label={`Delete ${item.name}`}
-										>
-											<Trash2 aria-hidden />
-										</Button>
-									</div>
-								</TableCell>
-							</Fragment>
+					{shoppingListItems.length === 0 ? (
+						<TableRow>
+							<TableCell
+								colSpan={3}
+								className="text-center text-muted-foreground px-4 py-36 break-words whitespace-normal overflow-hidden"
+							>
+								No items in your shopping list. Add some items to get started!
+							</TableCell>
 						</TableRow>
-					))}
+					) : (
+						<>
+							{shoppingListItems.map((item, i) => (
+								<TableRow
+									key={item.id + i}
+									ref={i === shoppingListItems.length - 1 ? lastItemRef : null}
+								>
+									<Fragment>
+										<TableCell className="font-medium break-words whitespace-normal overflow-hidden">
+											{item.name}
+										</TableCell>
+
+										<TableCell>{item.amount}</TableCell>
+
+										<TableCell>
+											<div className="flex items-center justify-end gap-2">
+												<Button
+													variant="outline"
+													onClick={() => handleModalOpen(item)}
+													aria-label={`Edit ${item.name}`}
+												>
+													<Pen aria-hidden />
+												</Button>
+
+												<Button
+													onClick={() => handleDeleteItem(item.id)}
+													variant="destructive"
+													aria-label={`Delete ${item.name}`}
+												>
+													<Trash2 aria-hidden />
+												</Button>
+											</div>
+										</TableCell>
+									</Fragment>
+								</TableRow>
+							))}
+						</>
+					)}
 				</TableBody>
 			</Table>
 

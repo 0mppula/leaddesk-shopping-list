@@ -73,7 +73,7 @@ const EditShoppingListItemModal = () => {
 		<Dialog open={editModalOpen} onOpenChange={(open) => handleModalOpenChange(open)}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Edit Item: {editedItem?.name}</DialogTitle>
+					<DialogTitle>Editing: {editedItem?.name}</DialogTitle>
 				</DialogHeader>
 
 				<Form {...form}>
