@@ -33,6 +33,7 @@ const ShoppingListForm = () => {
 
 		toast('Item added successfully!');
 		form.reset();
+		form.setFocus('name');
 	};
 
 	return (
