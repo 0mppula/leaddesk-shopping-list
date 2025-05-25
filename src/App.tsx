@@ -14,7 +14,10 @@ function App() {
 			<div className="flex items-center gap-4 mb-8">
 				<img src={logo} className="size-16 hidden md:block" alt="Shopping List logo" />
 
-				<h1 className="font-roboto-mono scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
+				<h1
+					data-testid="title"
+					className="font-roboto-mono scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center"
+				>
 					Shopping List
 				</h1>
 			</div>
@@ -25,7 +28,10 @@ function App() {
 				<Separator className="mt-4 w-full border-t-2 border-dashed bg-primary-neutral" />
 
 				<div className="flex flex-col gap-4">
-					<h2 className="mt-10 scroll-m-20 border-b pb-2 text-xl font-semibold tracking-tight transition-colors first:mt-0">
+					<h2
+						data-testid="add-new-products"
+						className="mt-10 scroll-m-20 border-b pb-2 text-xl font-semibold tracking-tight transition-colors first:mt-0"
+					>
 						Add new Products
 					</h2>
 

@@ -55,7 +55,7 @@ const ShoppingList = () => {
 
 	return (
 		<ScrollArea className="pr-2 overflow-contain grid h-[480px] w-full grid-cols-1 overflow-auto">
-			<Table className="table-fixed w-full min-w-96">
+			<Table data-testid="shopping-list-table" className="table-fixed w-full min-w-96">
 				<TableCaption className="sr-only">A list of your shopping items.</TableCaption>
 
 				<TableHeader>

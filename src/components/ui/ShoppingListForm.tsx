@@ -45,7 +45,11 @@ const ShoppingListForm = () => {
 					render={({ field }) => (
 						<FormItem className="w-full">
 							<FormControl>
-								<Input placeholder="Add a new item..." {...field} />
+								<Input
+									data-testid="shopping-list-name-input"
+									placeholder="Add a new item..."
+									{...field}
+								/>
 							</FormControl>
 						</FormItem>
 					)}
@@ -57,13 +61,19 @@ const ShoppingListForm = () => {
 					render={({ field }) => (
 						<FormItem className="w-20">
 							<FormControl>
-								<Input type="number" min="0" placeholder="12" {...field} />
+								<Input
+									data-testid="shopping-list-amount-input"
+									type="number"
+									min="0"
+									placeholder="12"
+									{...field}
+								/>
 							</FormControl>
 						</FormItem>
 					)}
 				/>
 
-				<Button type="submit">
+				<Button data-testid="shopping-list-add-button" type="submit">
 					<Plus aria-hidden />
 				</Button>
 			</form>
