@@ -1,5 +1,7 @@
 # Shopping List
 
+![Shopping List UI](src\assets\mock.jpg)
+
 ## What is Shopping List?
 
 This application enables users to manage a shopping list by adding items along with desired quantities. Users can edit or remove items, and all input is validated during both item creation and editing to ensure data integrity. Initially the app generates 5-10 random items to the shopping list, these items are named `Item <id_of_item>`
