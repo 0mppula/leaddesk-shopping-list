@@ -6,6 +6,8 @@ This application enables users to manage a shopping list by adding items along w
 
 The application is developed using React.js, TypeScript, and Redux.js. The user interface is built with Shadcn-UI and styled using Tailwind CSS.
 
+Unit tests are implemented using Vitest, a fast and lightweight testing framework that is compatible with Jest syntax and designed to work seamlessly with Vite-based applications.
+
 Follow the instructions below to quickly set up the repository or run unit tests.
 
 ### Key Features:
@@ -73,6 +75,7 @@ Running commands with npm `npm run [command]`
 -   **React Hook Form**: A performant, flexible library for handling forms and validation in React.
 -   **Zod**: TypeScript-first schema declaration and validation library used for form validation.
 -   **Vite**: A fast build tool and development server that optimizes performance and DX.
+-   **Vitest**: A fast testing framework designed for Vite, compatible with Jest syntax and easy to set up for unit testing.
 
 ### UI
 
