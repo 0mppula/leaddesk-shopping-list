@@ -1,6 +1,6 @@
 # Shopping List
 
-![Shopping List UI](src\assets\mock.jpg)
+![Shopping List UI](/src/assets/mock.jpg)
 
 ## What is Shopping List?
 
